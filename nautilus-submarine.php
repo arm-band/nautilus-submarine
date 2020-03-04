@@ -2,14 +2,14 @@
 /*
 Plugin Name: Nautilus Submarine
 Description: 投稿者アーカイブを無効化し、WP REST API の users も秘匿する簡易なプラグイン
-Version: 0.0.1
+Version: 0.0.2
 Author: アルム＝バンド
 License: MIT
 */
 
 // 投稿者アーカイブの無効化
 function disable_author_archive() {
-    if( $_GET['author'] || preg_match('#/author/.+#', $_SERVER['REQUEST_URI']) ){
+    if( isset($_GET['author']) && $_GET['author'] || preg_match('#/author/.+#', $_SERVER['REQUEST_URI']) ){
         wp_redirect( home_url('/404.php') );
         exit;
     }
